@@ -1,0 +1,1 @@
+The EM_solver_FDTD.py provides a fast and accurate simulation of planar microwave circuits based on the FDTD method. The file 'FDTD_code.ipynb' shows a demo of how to use the EM_solver_FDTD for general planar microwave circuits modeling.
