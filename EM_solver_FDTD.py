@@ -47,13 +47,13 @@ class FDTD_EM():
         
         return mediaxx, mediayy, mediazz
     
+    # Adjust the index for y-axis in the PEC layer
     def tuneY(self, y):
         a, b = y.shape
         y_copy = y[:-1, :]
         afterTune = np.ones((a, b))
-        for ii in range(1, a):  # Python中索引从0开始
-            for jj in range(b):  # b而不是a，应该是遍历列
-                # 检查条件并应用规则
+        for ii in range(1, a):  
+            for jj in range(b):  
                 if y[ii, jj] == 0 or y_copy[ii-1, jj] == 0:
                     afterTune[ii, jj] = 0
         return afterTune
@@ -430,9 +430,6 @@ class FDTD_EM():
         return vinc, vtotalp1, vtotalp2 
     
     def S_parameter(self, vinc, v1, v2, steps, dt):
-        
-        # vinc, v1, v2 = kwargs['vinc'], kwargs['v1'], kwargs['v2']
-        # steps, dt = kwargs['steps'], kwargs['dt']
         
         # zero padding for better frequency resolution
         N_FFT = 4*steps   
